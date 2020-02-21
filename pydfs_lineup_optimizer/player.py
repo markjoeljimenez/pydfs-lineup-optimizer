@@ -18,7 +18,7 @@ class Player:
                  team: str,
                  salary: float,
                  fppg: float,
-                 is_injured: bool = False,
+                 status: Optional[str] = None,
                  max_exposure: Optional[float] = None,
                  min_exposure: Optional[float] = None,
                  projected_ownership: Optional[float] = None,
@@ -35,7 +35,7 @@ class Player:
         self.team = team
         self.salary = salary
         self.fppg = fppg
-        self.is_injured = is_injured
+        self.status = status
         self.game_info = game_info
         self.roster_order = roster_order
         self.is_mvp = False  # type: bool

@@ -23,7 +23,7 @@ class OptimizerRulesTestCase(unittest.TestCase):
 
     def test_with_injured_optimize(self):
         optimizer = self.lineup_optimizer
-        cool_player = Player('1', 'P1', 'P1', ['PG'], 'team1', 1, 200, is_injured=True)
+        cool_player = Player('1', 'P1', 'P1', ['PG'], 'team1', 1, 200, status='O')
         optimizer.extend_players([cool_player])
         lineup = next(optimizer.optimize(1))
         self.assertNotIn(cool_player, lineup)

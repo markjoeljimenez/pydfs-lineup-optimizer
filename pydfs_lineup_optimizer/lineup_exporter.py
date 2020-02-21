@@ -53,3 +53,41 @@ class FantasyDraftCSVLineupExporter(LineupExporter):
         with open(filename, 'w') as csvfile:
             writer = csv.writer(csvfile)
             writer.writerows(lines)
+
+
+class JSONLineupExporter(LineupExporter):
+    def export(self, render_func=None):
+        totalLineups = {
+            "lineups": []
+        }
+        for index, lineup in enumerate(self.lineups):
+            lineupList = []
+            # Generate players JSON object
+            for player in lineup.lineup:
+                playerJSON = {
+                    "draft": {
+                        "salary": player.salary
+                    },
+                    "first_name": player.first_name,
+                    "points_per_contest": player.fppg,
+                    # "gameInfo": player.game_info,
+                    "id": player.id,
+                    # "isLocked": player.is_locked,
+                    "last_name": player.last_name,
+                    "position": {
+                        "name": '/'.join(player.positions)
+                    },
+                    # "positions": '/'.join(player.positions),
+                    # "salary": player.salary,
+                    "status": player.status,
+                    "team": player.team,
+                }
+                lineupList.append(playerJSON)
+            # Generate lineup JSON object
+            lineupJSON = {
+                "players": lineupList,
+                "totalSalary": lineup.salary_costs,
+                "totalFppg": lineup.fantasy_points_projection
+            }
+            totalLineups["lineups"].append(lineupJSON)
+        return totalLineups
