@@ -4,8 +4,6 @@ from pydfs_lineup_optimizer.lineup import Lineup
 
 
 class CSVImporter:
-    site = None  # type: str
-
     def __init__(self, filename: str):
         self.filename = filename
 
@@ -23,6 +21,8 @@ class CSVImporter:
     @classmethod
     def get_player_extra(cls, row: Dict[str, str]) -> Dict[str, Any]:
         roster_order = row.get('Roster Order')
+        fppg_floor = row.get('Projection Floor')
+        fppg_ceil = row.get('Projection Ceil')
         return {
             'max_exposure': cls._parse_exposure(row.get('Max Exposure')),
             'min_exposure': cls._parse_exposure(row.get('Min Exposure')),
@@ -31,4 +31,6 @@ class CSVImporter:
             'min_deviation': cls._parse_exposure(row.get('Min Deviation')),
             'max_deviation': cls._parse_exposure(row.get('Max Deviation')),
             'is_confirmed_starter': bool(row.get('Confirmed Starter')),
+            'fppg_floor': float(fppg_floor) if fppg_floor else None,
+            'fppg_ceil': float(fppg_ceil) if fppg_ceil else None,
         }
