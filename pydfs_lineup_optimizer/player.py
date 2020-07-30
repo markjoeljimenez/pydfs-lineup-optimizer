@@ -7,7 +7,8 @@ from pydfs_lineup_optimizer.tz import get_timezone
 from pydfs_lineup_optimizer.constants import PlayerRank
 
 
-GameInfo = namedtuple('GameInfo', ['home_team', 'away_team', 'starts_at', 'game_started'])
+GameInfo = namedtuple(
+    'GameInfo', ['home_team', 'away_team', 'starts_at', 'game_started'])
 
 
 class Player:
@@ -19,9 +20,8 @@ class Player:
                  team: str,
                  salary: float,
                  fppg: float,
-                 status: Optional[str] = None,
-                 rank: PlayerRank = PlayerRank.REGULAR,
                  is_injured: bool = False,
+                 rank: PlayerRank = PlayerRank.REGULAR,
                  max_exposure: Optional[float] = None,
                  min_exposure: Optional[float] = None,
                  projected_ownership: Optional[float] = None,
@@ -40,7 +40,6 @@ class Player:
         self.team = team
         self.salary = salary
         self.fppg = fppg
-        self.status = status
         self.game_info = game_info
         self.roster_order = roster_order
         self.rank = rank

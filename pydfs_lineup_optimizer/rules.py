@@ -184,7 +184,7 @@ class MinSalaryCapRule(OptimizerRule):
 
 class RemoveInjuredRule(OptimizerRule):
     def apply(self, solver, players_dict):
-        injured_players_variables = [variable for player, variable in players_dict.items() if player.status is not None]
+        injured_players_variables = [variable for player, variable in players_dict.items() if player.is_injured]
         solver.add_constraint(injured_players_variables, None, SolverSign.EQ, 0)
 
 
