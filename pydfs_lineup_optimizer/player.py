@@ -40,6 +40,7 @@ class Player:
         self.team = team
         self.salary = salary
         self.fppg = fppg
+        self.is_injured = is_injured
         self.game_info = game_info
         self.roster_order = roster_order
         self.rank = rank
