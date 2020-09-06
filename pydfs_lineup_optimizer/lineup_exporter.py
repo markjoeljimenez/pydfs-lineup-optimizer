@@ -59,6 +59,20 @@ class FantasyDraftCSVLineupExporter(LineupExporter):
             writer.writerows(lines)
 
 
+class DraftKingsCSVLineupExporter(LineupExporter):
+    def export(self, filename, render_func=None):
+        with open(filename, 'w') as csvfile:
+            lineup_writer = csv.writer(csvfile, delimiter=',')
+            for index, lineup in enumerate(self.lineups):
+                if index == 0:
+                    header = [
+                        player.lineup_position for player in lineup.lineup]
+                    lineup_writer.writerow(header)
+                row = [(render_func or self.render_player)(player)
+                       for player in lineup.lineup]
+                lineup_writer.writerow(row)
+
+
 class JSONLineupExporter(LineupExporter):
     def export(self, render_func=None):
         totalLineups = {
