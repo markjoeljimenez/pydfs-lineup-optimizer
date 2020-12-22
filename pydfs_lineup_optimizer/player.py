@@ -20,7 +20,6 @@ class Player:
                  salary: float,
                  fppg: float,
                  is_injured: bool = False,
-                 rank: PlayerRank = PlayerRank.REGULAR,
                  max_exposure: Optional[float] = None,
                  min_exposure: Optional[float] = None,
                  projected_ownership: Optional[float] = None,
