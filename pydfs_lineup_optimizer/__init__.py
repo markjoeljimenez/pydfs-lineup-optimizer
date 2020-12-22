@@ -16,7 +16,7 @@ __all__ = [
     'get_optimizer', 'Site', 'Sport', 'Player', 'LineupOptimizerException', 'LineupOptimizerIncorrectTeamName',
     'LineupOptimizerIncorrectPositionName', 'LineupOptimizerIncorrectCSV', 'LineupOptimizer', 'Lineup',
     'CSVLineupExporter', 'set_timezone', 'FantasyDraftCSVLineupExporter', 'PlayersGroup', 'TeamStack', 'PositionsStack',
-    'Stack', 'TotalExposureStrategy', 'AfterEachExposureStrategy', 'DraftKingsCSVLineupExporter'
+    'Stack', 'TotalExposureStrategy', 'AfterEachExposureStrategy', 'DraftKingsCSVLineupExporter', 'JSONLineupExporter'
 ]
 
 
